@@ -3,31 +3,33 @@
 
 # 📝 Zadanie: Postawienie drugiego Gradio z mniejszym Whisperem
 
-Masz już usługę `whisper-gradio` z modelem **Whisper Small**.
-Dodaj teraz **drugą usługę**, która uruchamia **Whisper Tiny**.
+Uruchom usługę `gradio-whisper` z modelem **Whisper Small**.
 
 ---
 
 ## 1. Zmodyfikuj `app.py`
 
-Dodaj nowy plik, np. `app_tiny.py`, z pipeline dla mniejszego modelu Whisper Tiny.
+Zmodyfikuj plik `app.py`, z pipeline dla mniejszego modelu Whisper Tiny.
 
-Uwaga: ustaw port na **8001**, żeby nie kolidował z 8000.
 
 ---
 
-## 2. Uruchom serwisy
+## 2. Zbuduj i uruchom obraz 
 
 ```bash
-docker compose up --build
+docker build -t gradio-whisper .
+```
+
+# uruchomienie
+```
+docker run -d --name gradio-whisper -p 8000:8000 gradio-whisper:latest
 ```
 
 ---
 
 ## 3. Przetestuj w przeglądarce przez guacamole lub przez forwarding portu
 
-* Whisper Small → [http://localhost:8000](http://localhost:8000)
-* Whisper Tiny → [http://localhost:8001](http://localhost:8001)
+* Whisper Tiny → [http://localhost:8000](http://localhost:8000)
 
 ---
 
@@ -46,7 +48,6 @@ docker compose up --build
 
    Sprawdź:
 
-   * zużycie CPU/RAM przez Whisper Small,
    * zużycie CPU/RAM przez Whisper Tiny.
 
 ---
