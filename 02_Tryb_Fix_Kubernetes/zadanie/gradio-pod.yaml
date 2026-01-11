@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gradio-pod
+  labels:
+    app: gradio
+    tier: frontend
+spec:
+  containers:
+  - name: gradio-container
+    image: gradio-app:latest
+    ports:
+    - containerPort: 7860
+      protocol: TCP
+    imagePullPolicy: Never
